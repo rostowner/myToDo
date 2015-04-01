@@ -3,9 +3,13 @@
  */
 var gulp = require('gulp');
 var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var rename = require('gulp-rename');
 
 gulp.task('scripts', function () {
     return gulp.src('app/*.js')
-        .pipe('main.js')
-        .pipe(gulp.dest('~/app/js/main.js'));
+        .pipe(concat('main.js'))
+        .pipe(rename({suffix: '.min'}))
+        .pipe(uglify())
+        .pipe(gulp.dest('app/js'));
 });
