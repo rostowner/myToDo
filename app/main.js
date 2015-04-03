@@ -9,6 +9,8 @@ var app = angular.module('app', []);
 
 app.controller('todoCtrl', function ($scope, $element) {
 
+    $scope.todoList = [];
+
     $scope.name = 'abc';
 
     console.log($element);

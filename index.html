@@ -10,8 +10,17 @@
 </head>
 <body ng-app="app">
     <div ng-controller="todoCtrl">
-        <p>{{ name }}</p>
-        <p>{{ element }}</p>
+
+        <div ng-show="!todoList.length">
+            <h1>No items, please add!</h1>
+        </div>
+
+        <div ng-show="todoList.length">
+
+            <p>{{ name }}</p>
+            <p>{{ element }}</p>
+        </div>
+
     </div>
 </body>
 </html>
