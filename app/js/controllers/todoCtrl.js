@@ -2,25 +2,9 @@
  * Created by rost on 02.04.15.
  */
 
-app.controller('todoCtrl', function ($scope, $element) {
+app.controller('todoCtrl', function ($scope, storage) {
 
-    $scope.newTodo = {
-        title: '',
-        done: false
-    };
+    $scope.todoList = storage.get();
 
-    $scope.todoList = localStorage.getItem('todoList') || [{
-        title: 'y1',
-        done: false
-    }, {
-        title: 'y2',
-        done: false
-    }, {
-        title: 'no',
-        done: true
-    }]/*
-        .filter(function (x) {
-            return !x.done;
-        })*/;
 
 });
