@@ -14,7 +14,14 @@
             <div class="col l12">
                 <ul class="collection">
 
-                    <li class="collapsible-header"><h5>ToDo</h5></li>
+                    <li class="collapsible-header">
+                        <h5>
+                            ToDo
+                            <i
+                                    class="mdi-content-add-circle medium prefix"
+                                    ng-click="add()"></i>
+                        </h5>
+                    </li>
                     <li class="collection-item" ng-repeat="item in todoList">
 
                         <div class="row">
@@ -24,7 +31,8 @@
                                         type="text"
                                         id="{{ $index }}_{{ item.title }}"
                                         ng-model="item.title"
-                                        ng-disabled="item.done" />
+                                        ng-disabled="item.done"
+                                        ng-keyup="save($event)"/>
                                 <label for="{{ $index }}_{{ item.title }}">Text</label>
                             </div>
 

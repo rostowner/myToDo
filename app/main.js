@@ -11,6 +11,19 @@ app.controller('todoCtrl', function ($scope, storage) {
 
     $scope.todoList = storage.get();
 
+    $scope.add = function () {
+        $scope.todoList.push({
+            title: "",
+            done: false
+        });
+    };
+
+    $scope.save = function ($event, $element) { // todo: save only this elem
+        if ($event.keyCode == '13') {
+            storage.put($scope.todoList);
+        }
+    };
+
 });
 /**
  * Created by rost on 10.04.15.
