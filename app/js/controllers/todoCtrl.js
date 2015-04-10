@@ -6,5 +6,4 @@ app.controller('todoCtrl', function ($scope, storage) {
 
     $scope.todoList = storage.get();
 
-
 });

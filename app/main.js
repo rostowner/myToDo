@@ -11,7 +11,6 @@ app.controller('todoCtrl', function ($scope, storage) {
 
     $scope.todoList = storage.get();
 
-
 });
 /**
  * Created by rost on 10.04.15.
@@ -22,7 +21,7 @@ app.factory('storage', function () {
 
     return {
         get: function () {
-            return JSON.parse(localStorage.getItem(STORAGE_ID) || '[{ title: "", done: false }]');
+            return JSON.parse(localStorage.getItem(STORAGE_ID) || '[{ "title": "", "done": false }]');
         },
 
         put: function (arr) {
