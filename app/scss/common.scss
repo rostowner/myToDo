@@ -1,12 +1,11 @@
-.add {
-  display: block;
+// variables
+$margin-bottom: 80px;
+
+// rules
+h3 {
+  margin-bottom: $margin-bottom;
 }
-.minus {
-  display: block;
-}
-.wow {
-  background: transparent;
-}
-.class25 {
-  border: none;
+
+.done-box {
+  margin: 30px 0 0;
 }

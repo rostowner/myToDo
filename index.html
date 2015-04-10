@@ -2,25 +2,60 @@
 <html>
 <head>
     <title>toDo</title>
-    <script type="text/javascript" src="app/libs.js"></script>
-    <script type="text/javascript" src="app/main.js"></script>
-    <link rel="stylesheet" href="bower_components/angular/angular-csp.css" />
-    <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.css" />
-    <link rel="stylesheet" href="app/common.css" />
+    <link rel="stylesheet" type="text/css" href="bower_components/angular/angular-csp.css" />
+    <link rel="stylesheet" type="text/css" href="bower_components/materialize/dist/css/materialize.css" />
+    <link rel="stylesheet" type="text/css" href="app/common.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </head>
-<body ng-app="app">
-    <div ng-controller="todoCtrl">
+<body ng-app="app" class="blue-grey lighten-5">
+    <div ng-controller="todoCtrl" class="container grey lighten-5">
 
-        <div ng-show="!todoList.length">
-            <h1>No items, please add!</h1>
+        <div ng-hide="todoList.length" class="row">
+            <div class="col l12">
+                <div class="input-field col l6">
+                    <input id="first" type="text" class="validate" />
+                    <label for="first">Text</label>
+                </div>
+            </div>
         </div>
 
-        <div ng-show="todoList.length">
+        <div class="row" ng-show="todoList.length"> <!-- use collection -->
+            <div class="col l12">
+                <ul class="collection">
 
-            <p>{{ name }}</p>
-            <p>{{ element }}</p>
+                    <li class="collapsible-header"><h5>ToDo</h5></li>
+                    <li class="collection-item" ng-repeat="item in todoList">
+
+                        <div class="row">
+
+                            <div class="input-field col l10">
+                                <input
+                                        type="text"
+                                        id="{{ $index }}_{{ item.title }}"
+                                        ng-model="item.title"
+                                        ng-disabled="item.done" />
+                                <label for="{{ $index }}_{{ item.title }}">Text</label>
+                            </div>
+
+                            <div class="col l2 done-box">
+                                <input
+                                        type="checkbox"
+                                        id="checkbox_{{ $index }}"
+                                        ng-model="item.done" />
+                                <label for="checkbox_{{ $index }}">done</label>
+                            </div>
+
+                        </div>
+
+                    </li>
+
+                </ul>
+            </div>
         </div>
+
 
     </div>
+    <script type="text/javascript" src="app/libs.js"></script>
+    <script type="text/javascript" src="app/main.js"></script>
 </body>
 </html>

@@ -4,11 +4,23 @@
 
 app.controller('todoCtrl', function ($scope, $element) {
 
-    $scope.todoList = [];
+    $scope.newTodo = {
+        title: '',
+        done: false
+    };
 
-    $scope.name = 'abc';
-
-    console.log($element);
-    console.log(1);
+    $scope.todoList = localStorage.getItem('todoList') || [{
+        title: 'y1',
+        done: false
+    }, {
+        title: 'y2',
+        done: false
+    }, {
+        title: 'no',
+        done: true
+    }]/*
+        .filter(function (x) {
+            return !x.done;
+        })*/;
 
 });
