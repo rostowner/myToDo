@@ -57,7 +57,7 @@ gulp.task('bedug-scss', function () {
 
 gulp.task('default-scripts', ['debug-scripts', 'min-scripts']);
 gulp.task('default-scss', ['bedug-scss']);
-gulp.task('default-libs', ['libs-js'/*, 'libs-css'*/]);
+gulp.task('default-libs', ['libs-js']);
 
 gulp.task('default', ['default-scripts', 'default-scss', 'default-libs']);
 

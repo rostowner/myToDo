@@ -69,12 +69,15 @@ function setFsWatchListener(path, fullPath, options, handlers) {
   var errHandler = handlers.errHandler;
   var rawEmitter = handlers.rawEmitter;
   var container = FsWatchInstances[fullPath];
+  var watcher;
   if (!options.persistent) {
-    return createFsWatchInstance(
+    watcher = createFsWatchInstance(
       path, options, listener, errHandler, rawEmitter
     );
-  } else if (!container) {
-    var watcher = createFsWatchInstance(
+    return watcher.close.bind(watcher);
+  }
+  if (!container) {
+    watcher = createFsWatchInstance(
       path,
       options,
       fsWatchBroadcast.bind(null, fullPath, 'listeners'),

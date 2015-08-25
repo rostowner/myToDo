@@ -7,38 +7,31 @@ var app = angular.module('app', []);
  * Created by rost on 02.04.15.
  */
 
-app.controller('todoCtrl', function ($scope, storage) {
+app.controller('todoCtrl', function ($scope) {
 
-    $scope.todoList = storage.get();
+	$scope.newItem = "";
 
-    $scope.add = function () {
+    $scope.todoList = localStorage.getItem("todoList") || [];
+
+    function add (title) {
+	    title = title || "";
         $scope.todoList.push({
-            title: "",
+            title: title,
             done: false
         });
-    };
+    }
+
+	$scope.addItem = function (event) {
+		if (event.keyCode === 13) {
+			add($scope.newItem);
+			$scope.newItem = "";
+		}
+	};
 
     $scope.save = function ($event, $element) { // todo: save only this elem
         if ($event.keyCode == '13') {
-            storage.put($scope.todoList);
+	        localStorage.setItem("todoList", $scope.todoList);
         }
     };
 
-});
-/**
- * Created by rost on 10.04.15.
- */
-
-app.factory('storage', function () {
-    var STORAGE_ID = 'myToDo';
-
-    return {
-        get: function () {
-            return JSON.parse(localStorage.getItem(STORAGE_ID) || '[{ "title": "", "done": false }]');
-        },
-
-        put: function (arr) {
-            localStorage.setItem(STORAGE_ID, JSON.stringify(arr));
-        }
-    };
 });

@@ -10,22 +10,31 @@
 <body ng-app="app" class="blue-grey lighten-5">
     <div ng-controller="todoCtrl" class="container grey lighten-5">
 
-        <div class="row" ng-show="todoList.length"> <!-- use collection -->
+	    <div class="row">
+		    <div class="input-field col l12">
+			    <input
+					    placeholder="Insert task here!"
+					    id="init_text"
+					    type="text"
+					    class="validate"
+					    ng-module="newItem"
+					    ng-keyup="addItem($event)"/>
+			    <label for="init_text">Insert task here!</label>
+		    </div>
+	    </div>
+
+        <div class="row" ng-show="todoList.length">
             <div class="col l12">
                 <ul class="collection">
-
                     <li class="collapsible-header">
                         <h5>
                             ToDo
-                            <i
-                                    class="mdi-content-add-circle medium prefix"
-                                    ng-click="add()"></i>
+                            <!--<i class="mdi-content-add-circle medium prefix"
+                               ng-click="add()"></i>-->
                         </h5>
                     </li>
                     <li class="collection-item" ng-repeat="item in todoList">
-
                         <div class="row">
-
                             <div class="input-field col l10">
                                 <input
                                         type="text"
@@ -35,7 +44,6 @@
                                         ng-keyup="save($event)"/>
                                 <label for="{{ $index }}_{{ item.title }}">Text</label>
                             </div>
-
                             <div class="col l2 done-box">
                                 <input
                                         type="checkbox"
@@ -43,11 +51,8 @@
                                         ng-model="item.done" />
                                 <label for="checkbox_{{ $index }}">done</label>
                             </div>
-
                         </div>
-
                     </li>
-
                 </ul>
             </div>
         </div>
