@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </head>
 <body ng-app="app" class="blue-grey lighten-5">
+
+	<div class="space"></div>
+
     <div ng-controller="todoCtrl" class="container grey lighten-5">
 
 	    <div class="row">
@@ -17,22 +20,37 @@
 					    id="init_text"
 					    type="text"
 					    class="validate"
-					    ng-module="newItem"
+					    ng-model="newItem"
 					    ng-keyup="addItem($event)"/>
-			    <label for="init_text">Insert task here!</label>
 		    </div>
 	    </div>
 
         <div class="row" ng-show="todoList.length">
             <div class="col l12">
-                <ul class="collection">
-                    <li class="collapsible-header">
-                        <h5>
-                            ToDo
-                            <!--<i class="mdi-content-add-circle medium prefix"
-                               ng-click="add()"></i>-->
-                        </h5>
-                    </li>
+	            <table class="striped bordered">
+		            <tr ng-repeat="item in todoList">
+			            <td>
+				            <div class="input-field">
+					            <input
+							            type="text"
+							            id="{{ $index }}_{{ item.title }}"
+							            ng-model="item.title"
+							            ng-disabled="item.done"/>
+				            </div>
+			            </td>
+			            <td>
+				            <div class="valign-wrapper">
+					            <input
+							            class="valign"
+							            type="checkbox"
+							            id="checkbox_{{ $index }}"
+							            ng-model="item.done" />
+					            <label class="valign" for="checkbox_{{ $index }}">done</label>
+				            </div>
+			            </td>
+		            </tr>
+	            </table>
+                <!--<ul class="collection">
                     <li class="collection-item" ng-repeat="item in todoList">
                         <div class="row">
                             <div class="input-field col l10">
@@ -40,20 +58,19 @@
                                         type="text"
                                         id="{{ $index }}_{{ item.title }}"
                                         ng-model="item.title"
-                                        ng-disabled="item.done"
-                                        ng-keyup="save($event)"/>
-                                <label for="{{ $index }}_{{ item.title }}">Text</label>
+                                        ng-disabled="item.done"/>
                             </div>
-                            <div class="col l2 done-box">
+                            <div class="col l2 valign-wrapper">
                                 <input
+		                                class="valign"
                                         type="checkbox"
                                         id="checkbox_{{ $index }}"
                                         ng-model="item.done" />
-                                <label for="checkbox_{{ $index }}">done</label>
+                                <label class="valign" for="checkbox_{{ $index }}">done</label>
                             </div>
                         </div>
                     </li>
-                </ul>
+                </ul>-->
             </div>
         </div>
 

@@ -3,18 +3,9 @@
  */
 
 app.controller('todoCtrl', function ($scope) {
-
 	$scope.newItem = "";
 
-    $scope.todoList = localStorage.getItem("todoList") || [];
-
-    function add (title) {
-	    title = title || "";
-        $scope.todoList.push({
-            title: title,
-            done: false
-        });
-    }
+    $scope.todoList = angular.fromJson(localStorage.getItem("todoList")) || [];
 
 	$scope.addItem = function (event) {
 		if (event.keyCode === 13) {
@@ -23,10 +14,12 @@ app.controller('todoCtrl', function ($scope) {
 		}
 	};
 
-    $scope.save = function ($event, $element) { // todo: save only this elem
-        if ($event.keyCode == '13') {
-	        localStorage.setItem("todoList", $scope.todoList);
-        }
-    };
-
+	function add (title) {
+		title = title || "";
+		$scope.todoList.push({
+			title: title,
+			done: false
+		});
+		localStorage.setItem("todoList", angular.toJson($scope.todoList));
+	}
 });
