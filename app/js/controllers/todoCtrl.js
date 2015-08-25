@@ -4,22 +4,32 @@
 
 app.controller('todoCtrl', function ($scope) {
 	$scope.newItem = "";
-
-    $scope.todoList = angular.fromJson(localStorage.getItem("todoList")) || [];
-
+	var todoList = angular.fromJson(localStorage.getItem("todoList")) || [];
 	$scope.addItem = function (event) {
 		if (event.keyCode === 13) {
 			add($scope.newItem);
 			$scope.newItem = "";
 		}
 	};
-
 	function add (title) {
 		title = title || "";
-		$scope.todoList.push({
+		todoList.push({
 			title: title,
 			done: false
 		});
-		localStorage.setItem("todoList", angular.toJson($scope.todoList));
+		localStorage.setItem("todoList", angular.toJson(todoList));
+	}
+});
+
+app.directive('todoItem', function () {
+	return {
+		restrict: "E",
+		scope: {},
+		controller: function($scope) {
+			$scope.todoList = [];
+			$scope.todoList = angular.fromJson(localStorage.getItem("todoList")) || [];
+		},
+		controllerAs: "items",
+		templateUrl: "./app/templates/item.html"
 	}
 });

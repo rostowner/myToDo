@@ -1,0 +1,21 @@
+<tr ng-repeat="item in items.todoList">
+	<td>
+		<div class="input-field">
+			<input
+					type="text"
+					id="{{ $index }}_{{ item.title }}"
+					ng-model="item.title"
+					ng-disabled="item.done"/>
+		</div>
+	</td>
+	<td>
+		<div class="valign-wrapper">
+			<input
+					class="valign"
+					type="checkbox"
+					id="checkbox_{{ $index }}"
+					ng-model="item.done" />
+			<label class="valign" for="checkbox_{{ $index }}">done</label>
+		</div>
+	</td>
+</tr>

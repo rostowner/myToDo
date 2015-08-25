@@ -28,49 +28,8 @@
         <div class="row" ng-show="todoList.length">
             <div class="col l12">
 	            <table class="striped bordered">
-		            <tr ng-repeat="item in todoList">
-			            <td>
-				            <div class="input-field">
-					            <input
-							            type="text"
-							            id="{{ $index }}_{{ item.title }}"
-							            ng-model="item.title"
-							            ng-disabled="item.done"/>
-				            </div>
-			            </td>
-			            <td>
-				            <div class="valign-wrapper">
-					            <input
-							            class="valign"
-							            type="checkbox"
-							            id="checkbox_{{ $index }}"
-							            ng-model="item.done" />
-					            <label class="valign" for="checkbox_{{ $index }}">done</label>
-				            </div>
-			            </td>
-		            </tr>
+		            <todo-item></todo-item>
 	            </table>
-                <!--<ul class="collection">
-                    <li class="collection-item" ng-repeat="item in todoList">
-                        <div class="row">
-                            <div class="input-field col l10">
-                                <input
-                                        type="text"
-                                        id="{{ $index }}_{{ item.title }}"
-                                        ng-model="item.title"
-                                        ng-disabled="item.done"/>
-                            </div>
-                            <div class="col l2 valign-wrapper">
-                                <input
-		                                class="valign"
-                                        type="checkbox"
-                                        id="checkbox_{{ $index }}"
-                                        ng-model="item.done" />
-                                <label class="valign" for="checkbox_{{ $index }}">done</label>
-                            </div>
-                        </div>
-                    </li>
-                </ul>-->
             </div>
         </div>
 
