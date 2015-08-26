@@ -21,8 +21,8 @@
     "type": "git",
     "url": "https://github.com/rostowner/myToDo.git"
   },
-  "author": "",
-  "license": "MIT",
+  "author": "rostowner",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/rostowner/myToDo/issues"
   },
