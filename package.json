@@ -1,7 +1,7 @@
 {
   "name": "myToDo",
   "version": "1.0.0",
-  "description": "",
+  "description": "---",
   "main": "gulpfile.js",
   "dependencies": {
     "gulp": "^3.8.11",

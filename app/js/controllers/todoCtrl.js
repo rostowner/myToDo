@@ -24,12 +24,9 @@ app.controller('todoCtrl', function ($scope) {
 app.directive('todoItem', function () {
 	return {
 		restrict: "E",
-		scope: {},
-		controller: function($scope) {
-			$scope.todoList = [];
-			$scope.todoList = angular.fromJson(localStorage.getItem("todoList")) || [];
-		},
-		controllerAs: "items",
-		templateUrl: "./app/templates/item.html"
+        scope: {
+            items: "todoList"
+        },
+        templateUrl: "./app/templates/item.html"
 	}
 });

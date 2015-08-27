@@ -1,6 +1,11 @@
-<tr ng-repeat="item in items.todoList">
+<tr ng-repeat="item in items" ng-show="items.length">
 	<td>
 		<div class="input-field">
+
+
+            <h1>{{item}}</h1>
+
+
 			<input
 					type="text"
 					id="{{ $index }}_{{ item.title }}"

@@ -1,6 +1,7 @@
 *.xml
-.idea/workspace.xml
+idea
+bower_components
+node_modules
 .idea/.name
-./bower_components
-./node_modules
+
 .idea/myToDo.iml
