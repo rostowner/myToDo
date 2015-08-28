@@ -20,7 +20,7 @@ app.controller('todoCtrl', function ($scope) {
 
 	function add (title) {
 		title = title || "";
-        $scope.todoList.push({
+        $scope.todoList.unshift({ // ad elem in the first place
 			title: title,
 			done: false
 		});
