@@ -9,27 +9,33 @@ var app = angular.module('app', []);
 
 app.controller('todoCtrl', function ($scope) {
 	$scope.newItem = "";
-	var todoList = angular.fromJson(localStorage.getItem("todoList")) || [];
-	$scope.addItem = function (event) {
+	$scope.todoList = angular.fromJson(localStorage.getItem("todoList")) || [];
+
+    console.log($scope.todoList);
+
+    $scope.addItem = function (event) {
 		if (event.keyCode === 13) {
 			add($scope.newItem);
 			$scope.newItem = "";
 		}
 	};
+
 	function add (title) {
 		title = title || "";
-		todoList.push({
+        $scope.todoList.push({
 			title: title,
 			done: false
 		});
-		localStorage.setItem("todoList", angular.toJson(todoList));
+		localStorage.setItem("todoList", angular.toJson($scope.todoList));
 	}
 });
 
-app.directive('todoItem', function () {
+app.directive('todoItems', function () {
 	return {
 		restrict: "E",
-        scope: {},
-        templateUrl: "./app/templates/item.html"
+        scope: {
+            items: "=items"
+        },
+        templateUrl: "./app/templates/items.html"
 	}
 });
