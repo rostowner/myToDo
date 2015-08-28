@@ -11,8 +11,6 @@ app.controller('todoCtrl', function ($scope) {
 	$scope.newItem = "";
 	$scope.todoList = angular.fromJson(localStorage.getItem("todoList")) || [];
 
-    console.log($scope.todoList);
-
     $scope.addItem = function (event) {
 		if (event.keyCode === 13) {
 			add($scope.newItem);
